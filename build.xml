@@ -1,0 +1,83 @@
+<project default="compile">
+  
+  <property environment="env" />
+  
+  <property name="webRoot" value="${env.HOME}/public_html/" />
+  <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}" />
+  
+  
+  <property name="project" value="jcapi_demo" />
+  
+  <property name="javadocDest" value="${webRoot}/${project}/javadoc" /> 
+  <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
+  
+  <property name="mainClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.Demo1"/>
+  
+  
+  <path id="project.class.path">
+    <pathelement location="build"/>
+    <pathelement location="lib/junit-4.8.2.jar"/>
+  </path>
+  
+  <target name="compile" description="compiles the program">
+    <mkdir dir="build"/>
+    <javac srcdir="src"
+	   destdir="build"
+	   includeantruntime="false"
+	   debug="true"
+	   debuglevel="lines,vars,source">
+      <classpath refid="project.class.path" />
+    </javac>
+    
+  </target> 
+  
+  <target name="run" depends="compile" description="run program">
+    <java classname="${mainClass}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+  
+  <target name="clean" description="cleans up the directory">
+    <delete dir="build" quiet="true" />
+    <delete dir="javadoc" quiet="true" />
+  </target>
+  
+  
+  <target name="javadoc"
+	  depends="compile"
+	  description="deploys the javadoc onto the web">
+    <delete dir="javadoc" quiet="true"/>
+    <javadoc destdir="javadoc" author="true" version="true" use="true">
+      <fileset dir="src" includes="**/*.java"/>
+      <classpath refid="project.class.path" />
+    </javadoc>
+    
+    
+    <delete quiet="true" dir="${javadocDest}"/>
+    <copy todir="${javadocDest}">
+      <fileset dir="javadoc"/>
+    </copy>
+    <chmod dir="${javadocDest}" perm="755" type="dir" includes="**"/>
+    <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*"/>
+    
+    <echo>Javadoc deployed to ${javadocURL} if on CSIL</echo>
+    <echo> or if not on CSIL, try file:///${javadocDest}/index.html</echo>
+    
+  </target>
+  
+  
+  
+  <target name="test" depends="compile" description="test the Hand class">
+    <junit haltonerror="no" haltonfailure="no">
+      <classpath refid="project.class.path" />
+      <batchtest fork="yes">
+	<fileset dir="src">
+          <!-- this will pick up every class with a name ending in Test -->
+          <include name="*Test.java"/>
+	</fileset>
+      </batchtest>
+      <formatter type="plain" usefile="false" /> 
+    </junit>
+  </target>
+  
+</project>
