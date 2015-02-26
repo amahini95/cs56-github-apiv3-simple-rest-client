@@ -3,9 +3,6 @@ TBD | pconrad | | Simplest possible github APIv3 simple rest client
 
 
 
-# cs56-github-jcapi-demo
-TBD | pconrad | | Demo of http://github.jcabi.com/
-
 # You First need to understand:
 
 * The Github Restful API: https://developer.github.com/v3/
