@@ -53,7 +53,7 @@ public class CS56ProjectList {
 			System.out.print(parser.getString());
 			System.out.print(": ");
 			break;
-		    case "message":
+		    case "description":
 			parser.next();
 			System.out.println(parser.getString());
 			System.out.println("---------");
