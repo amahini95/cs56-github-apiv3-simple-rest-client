@@ -20,7 +20,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
  
-public class Demo1 {
+public class CS56ProjectDump {
 
     public static String readAllBytes(String filename) throws Exception {
 	return new String(Files.readAllBytes(Paths.get(filename))).trim();
@@ -28,11 +28,12 @@ public class Demo1 {
 
 
     public static void main(String[] args)    {
+
         try {
 
 	    String oauthToken = Demo1.readAllBytes("tokens/MostPrivileges.txt");
 	    System.out.println("Read oauthToken--length is " + oauthToken.length());
-	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects");
+	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos");
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setRequestMethod("GET");
 	    conn.setRequestProperty("Accept", "application/json");
@@ -50,7 +51,8 @@ public class Demo1 {
             e.printStackTrace();        
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
+        } // try
+
+    } // main
 }
  

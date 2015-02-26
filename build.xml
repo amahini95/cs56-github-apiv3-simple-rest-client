@@ -11,10 +11,13 @@
   <property name="javadocDest" value="${webRoot}/${project}/javadoc" /> 
   <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
   
-  <property name="mainClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.Demo1"/>
+  <property name="dumpClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectDump"/>
+  <property name="listClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectList"/>
   
   
   <path id="project.class.path">
+    <pathelement location="lib/json-api-1.0.jar"/>
+    <pathelement location="lib/json-1.0.4.jar"/>
     <pathelement location="build"/>
     <pathelement location="lib/junit-4.8.2.jar"/>
   </path>
@@ -31,11 +34,18 @@
     
   </target> 
   
-  <target name="run" depends="compile" description="run program">
-    <java classname="${mainClass}" fork="true" >
+  <target name="runDump" depends="compile" description="run dump program">
+    <java classname="${dumpClass}" fork="true" >
       <classpath refid="project.class.path" />
     </java>
   </target>
+
+  <target name="runList" depends="compile" description="run list program">
+    <java classname="${listClass}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+
   
   <target name="clean" description="cleans up the directory">
     <delete dir="build" quiet="true" />
