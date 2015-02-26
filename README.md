@@ -6,7 +6,10 @@ TBD | pconrad | | Simplest possible github APIv3 simple rest client
 # You First need to understand:
 
 * The Github Restful API: https://developer.github.com/v3/
-* How to work with JSON in Java http://www.oracle.com/technetwork/articles/java/json-1973242.html
+* How to work with JSON in Java 
+ * http://www.oracle.com/technetwork/articles/java/json-1973242.html 
+ * https://jsonp.java.net/
+ * https://json-processing-spec.java.net/nonav/releases/1.0/fcs/javadocs/index.html
 * OAuth Tokens: (explained more below)
 
 # Creating OAuth tokens
