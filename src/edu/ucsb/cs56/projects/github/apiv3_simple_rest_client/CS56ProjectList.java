@@ -38,29 +38,39 @@ public class CS56ProjectList {
         try {
 
 	    String oauthToken = Demo1.readAllBytes("tokens/MostPrivileges.txt");
-	    System.out.println("Read oauthToken--length is " + oauthToken.length());
+	   // writer.write("Read oauthToken--length is " + oauthToken.length());
 	    
 	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos");
 
 	    InputStream is = url.openStream();
 	    JsonParser parser = Json.createParser(is);
+
+      File file = new File("data.csv");
+      // creates the file
+      file.createNewFile();
+      // creates a FileWriter Object
+      FileWriter writer = new FileWriter(file); 
+
 	    while (parser.hasNext()) {
 		Event e = parser.next();
 		if (e == Event.KEY_NAME) {
 		    switch (parser.getString()) {
 		    case "name":
 			parser.next();
-			System.out.print(parser.getString());
-			System.out.print(": ");
+			writer.write(parser.getString());
+			writer.write(", ");
 			break;
 		    case "description":
 			parser.next();
-			System.out.println(parser.getString());
-			System.out.println("---------");
+			writer.write(parser.getString().replace(",","\",\"").replace("|",","));
+			writer.write("\n");
+	//		writer.write("---------");
 			break;
 		    } // switch
 		} // if
 	    } // while
+	      writer.flush();
+      writer.close();
 	}  catch (MalformedURLException e) {
 	    e.printStackTrace();
 	} catch (IOException e) {
@@ -68,6 +78,8 @@ public class CS56ProjectList {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	} // try
+
+
 
     } // main
 }

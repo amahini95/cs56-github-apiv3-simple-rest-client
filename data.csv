@@ -1,0 +1,30 @@
+cs56-games-battleship, NO , mastergberry , OliverHKU  , Battleship game (Discontinued)
+cs56-games-blackjack, W15-YES , mliou , JaredBJensen (4pm) , (jstaahl) Blackjack game
+cs56-networking-chat, W15-YES , alecharrell , xuejingzhou"," zixia(4pm) , A chat application that uses a client and a server
+cs56-games-client-server, NO , mastergberry , Games that communicate via Java networking
+cs56-games-maze, W15-YES , mliou ,  porter614"," electricknee (4pm) , A program that generates at random a solvable rectangular maze
+cs56-languages-vocab-quiz, W15-YES , jrcryan , jillfarns"," tgetty (5pm) , A quiz that is designed to test the user's knowledge on foreign vocabulary
+cs56-music-guitar-tuner, YES , bronhuston , TBD , Guitar-related music applications
+cs56-scrapers-pdf, YES , mastergberry , bernardyan , (kjorg50) Utilities for scraping PDF files. Uses PDFBox as a tool.
+cs56-tutorials-xml, NO , mastergberry , Tutorial for XML usage with SAX XML Parser
+cs56-tutorials-hfj, NO , mastergberry , Tutorials from HFJ
+cs56-scrapers-ucsb-curriculum, ? , jstaahl 4pm , kmai12 , Parser for the UCSB curriculum search
+cs56-scrapers-baseball-stats, ? , jstaahl 5pm , maxsorenson , (kjorg50) a scraper that gathers statistics on Major League Baseball players
+cs56-utilities-ldap, W15-NO , dcoffill ,   , Utilities for LDAP (Lightweight Directory Access Protocol)"," e.g. for getting information on CSIL accounts
+cs56-math-conversion-quiz, W15-YES , PazZaitGivon , jamilka (6pm) , GUI for binary/octal/hex/decimal conversion quiz
+cs56-utilities-password-generator, W15-YES , PazZaitGivon , vincenicoara arda- (4pm) , A file that creates random passwords with a given password length
+cs56-games-memory-card, W15-YES , dcoffill , juliomaldonado"," shelbyelgood (5pm) , A memory card game
+cs56-games-fish-animation, W15-YES , jrcryan , mochele15"," shadeebarzin (4pm) , A fish animation game
+cs56-games-pong, W15-YES , alecharrell ,vincegando , An implementation of the classic game Pong"," with cooperative multiplayer support.
+cs56-misc-recipe-manager, NO , mastergberry , Recipe Manager
+CategoryList, ? , N/A
+cs56-utilities-TSA-Encryption, ? , bronhuston 4pm , rkjha7"," xgmak94 , TopCoder Security Agency (TSA"," established today) has just invented a new encryption system! This encryption system takes as its input a list of numbers to encrypt. 
+cs56-misc-translate-to-secret-languages, W15-YES , PazZaitGivon , isaacstaugaard , Make a program that takes an English word or small sentence and translate it into Pig Latin and Gibberish
+cs56-misc-map-gui, W15-TBD , PazZaitGivon , , Map GUI for navigating around UCSB's campus
+cs56-games-roguelike, W15-YES , dcoffill , dcwang (6pm) , ASCII roguelike game
+cs56-games-Go, YES , alecharrell , pichumy , A gui version of the Chinese board game called Go
+cs56-games-snake, W15-YES , alecharrell , eshong , Snake game
+cs56-music-basic-synthesis-demo, W-15 YES , mliou , mohithingorani"," , A basic demo of some simple synthesis starting with sine waves
+cs56-games-pacman, W15-YES , mliou , 2yangk23"," jinzhu1993 (4pm), (ianvernon) Pacman game"," starting with code from http://zetcode.com/tutorials/javagamestutorial/pacman/"," and improving
+cs56-games-towers-of-hanoi, YES , alecharrell , connormulcahey"," emorozova (4pm) , A towers of hanoi GAME (not a solver or a simulation or an animation of the algorithm!)
+cs56-discretemath-towers-sierpinski, ? , jstaahl 4pm , ShadowAries , Java software to explore the relationship between the Towers of Hanoi and the Sierpinski Triangle
