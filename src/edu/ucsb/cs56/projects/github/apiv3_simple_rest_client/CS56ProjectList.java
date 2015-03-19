@@ -1,6 +1,7 @@
 package edu.ucsb.cs56.projects.github.apiv3_simple_rest_client;
 
-
+import java.util.Map;
+import java.util.List;
 import javax.json.*;
 import javax.json.spi.*;
 import javax.json.stream.*;
@@ -41,28 +42,36 @@ public class CS56ProjectList {
 	   // writer.write("Read oauthToken--length is " + oauthToken.length());
 	    System.out.println("Read oauthToken--length is " + oauthToken.length());
 
-	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos?per_page=100");
+	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos?page=1&per_page=100");
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setRequestMethod("GET");
-	    conn.setRequestProperty("x-oath-basic", oauthToken);
+	    conn.setRequestProperty("Authorization", "token " + oauthToken);
 
+            Map<String, List<String>> map = conn.getHeaderFields();
+ 
+            System.out.println("Printing All Response Header for URL: "
+                    + url + "\n");
+ 
+            for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
 
 	    InputStream is = url.openStream();
 	    JsonParser parser = Json.createParser(is);
-
-      File file = new File("data.csv");
-      // creates the file
-      file.createNewFile();
-      // creates a FileWriter Object
-      FileWriter writer = new FileWriter(file); 
-int count = 0;
+	    
+	    File file = new File("data.tab");
+	    // creates the file
+	    file.createNewFile();
+	    // creates a FileWriter Object
+	    FileWriter writer = new FileWriter(file); 
+	    int count = 0;
 	    while (parser.hasNext()) {
-	    String out = "";
+		String out = "";
 		Event e = parser.next();
 		if (e == Event.KEY_NAME) {
 		    switch (parser.getString()) {
 		    case "name":
-
+			
 			parser.next();
 			if(!descriptionCreated){
 			// System.out.println();
@@ -71,7 +80,7 @@ int count = 0;
 
 			}
 			// System.out.print(parser.getString() + ", ");
-			out = parser.getString() + ", ";
+			out = parser.getString() + "\t";
 			// writer.write(parser.getString());
 			// writer.write(", ");
 			descriptionCreated=false;
@@ -79,26 +88,28 @@ int count = 0;
 		    case "description":
 
 			parser.next();
-			if(parser.getString().contains("W15-YES")){
-						    		    	    	count ++;
-
-				System.out.println(out + parser.getString().replace(",","\",\"").replace("|",","));
-
-				writer.write(out + parser.getString().replace(",","\",\"").replace("|",",")+ ",\n");
-							descriptionCreated=true;
-							out = "";
-				writer.write("\n");
+			if(parser.getString().contains("W15-YES")) {
+			    out += "W15-YES\t ";
+			} else {
+			    out += "OTHER\t ";			    
 			}
 
-	//		writer.write("---------");
+			count ++;
+			out += parser.getString().replace("|","\t");
+			System.out.println(out);
+			writer.write(out+"\n");
+			descriptionCreated=true;
+			out = "";
+			
+			//		writer.write("---------");
 			break;
 		    } // switch
 		} // if
 	    } // while
-	      writer.flush();
-      writer.close();
-       System.out.println("outputted: " + count + " projects" );
-
+	    writer.flush();
+	    writer.close();
+	    System.out.println("outputted: " + count + " projects" );
+	    
 	}  catch (MalformedURLException e) {
 	    e.printStackTrace();
 	} catch (IOException e) {
