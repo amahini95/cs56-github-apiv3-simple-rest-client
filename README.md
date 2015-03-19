@@ -37,9 +37,9 @@ You want to create a token with the privilege level needed.
 
 I suggest the following names, which are assumed in the example code:
 
-* PublicOnly.txt  only read privileges on public repositories and resources
-* ReadOnly.txt  only read privileges, but includes private repos, team memberships, etc.  It has all the privileges to "see" everything, but cannot make changes to anything.
-* MostPrivileges.txt  all privileges EXCEPT the most dangerous ones: keys, hooks and deleting repos.
+* tokens/PublicOnly.txt  only read privileges on public repositories and resources
+* tokens/ReadOnly.txt  only read privileges, but includes private repos, team memberships, etc.  It has all the privileges to "see" everything, but cannot make changes to anything.
+* tokens/MostPrivileges.txt  all privileges EXCEPT the most dangerous ones: keys, hooks and deleting repos.
 
 #common problems
 
