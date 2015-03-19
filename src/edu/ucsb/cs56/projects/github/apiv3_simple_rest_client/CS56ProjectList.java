@@ -32,15 +32,20 @@ public class CS56ProjectList {
 	return new String(Files.readAllBytes(Paths.get(filename))).trim();
     }
 
-
     public static void main(String[] args)    {
+    boolean descriptionCreated = false;
 
         try {
 
 	    String oauthToken = Demo1.readAllBytes("tokens/MostPrivileges.txt");
 	   // writer.write("Read oauthToken--length is " + oauthToken.length());
-	    
-	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos");
+	    System.out.println("Read oauthToken--length is " + oauthToken.length());
+
+	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos?per_page=100");
+	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	    conn.setRequestMethod("GET");
+	    conn.setRequestProperty("x-oath-basic", oauthToken);
+
 
 	    InputStream is = url.openStream();
 	    JsonParser parser = Json.createParser(is);
@@ -50,20 +55,41 @@ public class CS56ProjectList {
       file.createNewFile();
       // creates a FileWriter Object
       FileWriter writer = new FileWriter(file); 
-
+int count = 0;
 	    while (parser.hasNext()) {
+	    String out = "";
 		Event e = parser.next();
 		if (e == Event.KEY_NAME) {
 		    switch (parser.getString()) {
 		    case "name":
+
 			parser.next();
-			writer.write(parser.getString());
-			writer.write(", ");
+			if(!descriptionCreated){
+			// System.out.println();
+			// out+="\n";
+			// writer.write("\n");
+
+			}
+			// System.out.print(parser.getString() + ", ");
+			out = parser.getString() + ", ";
+			// writer.write(parser.getString());
+			// writer.write(", ");
+			descriptionCreated=false;
 			break;
 		    case "description":
+
 			parser.next();
-			writer.write(parser.getString().replace(",","\",\"").replace("|",","));
-			writer.write("\n");
+			if(parser.getString().contains("W15-YES")){
+						    		    	    	count ++;
+
+				System.out.println(out + parser.getString().replace(",","\",\"").replace("|",","));
+
+				writer.write(out + parser.getString().replace(",","\",\"").replace("|",",")+ ",\n");
+							descriptionCreated=true;
+							out = "";
+				writer.write("\n");
+			}
+
 	//		writer.write("---------");
 			break;
 		    } // switch
@@ -71,6 +97,8 @@ public class CS56ProjectList {
 	    } // while
 	      writer.flush();
       writer.close();
+       System.out.println("outputted: " + count + " projects" );
+
 	}  catch (MalformedURLException e) {
 	    e.printStackTrace();
 	} catch (IOException e) {
@@ -78,6 +106,8 @@ public class CS56ProjectList {
 	} catch (Exception e) {
 	    e.printStackTrace();
 	} // try
+
+
 
 
 

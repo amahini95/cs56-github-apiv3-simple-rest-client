@@ -41,4 +41,8 @@ I suggest the following names, which are assumed in the example code:
 * ReadOnly.txt  only read privileges, but includes private repos, team memberships, etc.  It has all the privileges to "see" everything, but cannot make changes to anything.
 * MostPrivileges.txt  all privileges EXCEPT the most dangerous ones: keys, hooks and deleting repos.
 
+#common problems
 
+If you run into an issue where it's not returning the whole repo list, that's because github automatically sets it to 30. you need to override this like so:
+
+$ curl 'https://api.github.com/user/repos?page=2&per_page=100'
