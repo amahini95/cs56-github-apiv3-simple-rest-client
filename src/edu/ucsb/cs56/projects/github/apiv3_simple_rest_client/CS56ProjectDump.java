@@ -31,12 +31,16 @@ public class CS56ProjectDump {
 
         try {
 
-	    String oauthToken = Demo1.readAllBytes("tokens/MostPrivileges.txt");
-	    System.out.println("Read oauthToken--length is " + oauthToken.length());
+	    String oauthToken = GithubAPIHelpers.readOauthToken("tokens/MostPrivileges.txt");
+
 	    URL url = new URL("https://api.github.com/orgs/UCSB-CS56-Projects/repos");
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
 	    conn.setRequestMethod("GET");
 	    conn.setRequestProperty("Accept", "application/json");
+	    GithubAPIHelpers.setOauthToken(conn,oauthToken);
+	    GithubAPIHelpers.dumpHttpHeaders(conn,System.out);
+
 	    if (conn.getResponseCode() != 200) {
 		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 	    }

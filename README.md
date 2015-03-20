@@ -46,3 +46,11 @@ I suggest the following names, which are assumed in the example code:
 If you run into an issue where it's not returning the whole repo list, that's because github automatically sets it to 30. you need to override this like so:
 
 $ curl 'https://api.github.com/user/repos?page=2&per_page=100'
+
+# Things we want for each pull request
+
+"url"
+"title"
+"user" { "login" }
+"body" 
+

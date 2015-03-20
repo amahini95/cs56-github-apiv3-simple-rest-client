@@ -13,6 +13,8 @@
   
   <property name="dumpClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectDump"/>
   <property name="listClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectList"/>
+
+  <property name="dumpPullRequestsClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56PullRequestDump"/>
   
   
   <path id="project.class.path">
@@ -39,6 +41,13 @@
       <classpath refid="project.class.path" />
     </java>
   </target>
+
+  <target name="runPRDump" depends="compile" description="run pull request dump program">
+    <java classname="${dumpPullRequestsClass}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+
 
   <target name="runList" depends="compile" description="run list program">
     <java classname="${listClass}" fork="true" >
