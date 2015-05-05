@@ -1,30 +1,74 @@
-cs56-games-battleship, NO , mastergberry , OliverHKU  , Battleship game (Discontinued)
-cs56-games-blackjack, W15-YES , mliou , JaredBJensen (4pm) , (jstaahl) Blackjack game
-cs56-networking-chat, W15-YES , alecharrell , xuejingzhou"," zixia(4pm) , A chat application that uses a client and a server
-cs56-games-client-server, NO , mastergberry , Games that communicate via Java networking
-cs56-games-maze, W15-YES , mliou ,  porter614"," electricknee (4pm) , A program that generates at random a solvable rectangular maze
-cs56-languages-vocab-quiz, W15-YES , jrcryan , jillfarns"," tgetty (5pm) , A quiz that is designed to test the user's knowledge on foreign vocabulary
-cs56-music-guitar-tuner, YES , bronhuston , TBD , Guitar-related music applications
-cs56-scrapers-pdf, YES , mastergberry , bernardyan , (kjorg50) Utilities for scraping PDF files. Uses PDFBox as a tool.
-cs56-tutorials-xml, NO , mastergberry , Tutorial for XML usage with SAX XML Parser
-cs56-tutorials-hfj, NO , mastergberry , Tutorials from HFJ
-cs56-scrapers-ucsb-curriculum, ? , jstaahl 4pm , kmai12 , Parser for the UCSB curriculum search
-cs56-scrapers-baseball-stats, ? , jstaahl 5pm , maxsorenson , (kjorg50) a scraper that gathers statistics on Major League Baseball players
-cs56-utilities-ldap, W15-NO , dcoffill ,   , Utilities for LDAP (Lightweight Directory Access Protocol)"," e.g. for getting information on CSIL accounts
-cs56-math-conversion-quiz, W15-YES , PazZaitGivon , jamilka (6pm) , GUI for binary/octal/hex/decimal conversion quiz
-cs56-utilities-password-generator, W15-YES , PazZaitGivon , vincenicoara arda- (4pm) , A file that creates random passwords with a given password length
-cs56-games-memory-card, W15-YES , dcoffill , juliomaldonado"," shelbyelgood (5pm) , A memory card game
-cs56-games-fish-animation, W15-YES , jrcryan , mochele15"," shadeebarzin (4pm) , A fish animation game
-cs56-games-pong, W15-YES , alecharrell ,vincegando , An implementation of the classic game Pong"," with cooperative multiplayer support.
-cs56-misc-recipe-manager, NO , mastergberry , Recipe Manager
-CategoryList, ? , N/A
-cs56-utilities-TSA-Encryption, ? , bronhuston 4pm , rkjha7"," xgmak94 , TopCoder Security Agency (TSA"," established today) has just invented a new encryption system! This encryption system takes as its input a list of numbers to encrypt. 
-cs56-misc-translate-to-secret-languages, W15-YES , PazZaitGivon , isaacstaugaard , Make a program that takes an English word or small sentence and translate it into Pig Latin and Gibberish
-cs56-misc-map-gui, W15-TBD , PazZaitGivon , , Map GUI for navigating around UCSB's campus
-cs56-games-roguelike, W15-YES , dcoffill , dcwang (6pm) , ASCII roguelike game
-cs56-games-Go, YES , alecharrell , pichumy , A gui version of the Chinese board game called Go
-cs56-games-snake, W15-YES , alecharrell , eshong , Snake game
-cs56-music-basic-synthesis-demo, W-15 YES , mliou , mohithingorani"," , A basic demo of some simple synthesis starting with sine waves
-cs56-games-pacman, W15-YES , mliou , 2yangk23"," jinzhu1993 (4pm), (ianvernon) Pacman game"," starting with code from http://zetcode.com/tutorials/javagamestutorial/pacman/"," and improving
-cs56-games-towers-of-hanoi, YES , alecharrell , connormulcahey"," emorozova (4pm) , A towers of hanoi GAME (not a solver or a simulation or an animation of the algorithm!)
-cs56-discretemath-towers-sierpinski, ? , jstaahl 4pm , ShadowAries , Java software to explore the relationship between the Towers of Hanoi and the Sierpinski Triangle
+W15-YES , mliou , JaredBJensen (4pm) , (jstaahl) Blackjack game,
+
+W15-YES , alecharrell , xuejingzhou"," zixia(4pm) , A chat application that uses a client and a server,
+
+W15-YES , mliou ,  porter614"," electricknee (4pm) , A program that generates at random a solvable rectangular maze,
+
+W15-YES , jrcryan , jillfarns"," tgetty (5pm) , A quiz that is designed to test the user's knowledge on foreign vocabulary,
+
+W15-YES , PazZaitGivon , jamilka (6pm) , GUI for binary/octal/hex/decimal conversion quiz,
+
+W15-YES , PazZaitGivon , vincenicoara arda- (4pm) , A file that creates random passwords with a given password length,
+
+W15-YES , dcoffill , juliomaldonado"," shelbyelgood (5pm) , A memory card game,
+
+W15-YES , jrcryan , mochele15"," shadeebarzin (4pm) , A fish animation game,
+
+W15-YES , alecharrell ,vincegando , An implementation of the classic game Pong"," with cooperative multiplayer support.,
+
+W15-YES , PazZaitGivon , isaacstaugaard , Make a program that takes an English word or small sentence and translate it into Pig Latin and Gibberish,
+
+W15-YES , dcoffill , dcwang (6pm) , ASCII roguelike game,
+
+W15-YES , alecharrell , eshong , Snake game,
+
+W15-YES , mliou , 2yangk23"," jinzhu1993 (4pm), (ianvernon) Pacman game"," starting with code from http://zetcode.com/tutorials/javagamestutorial/pacman/"," and improving,
+
+W15-YES , PazZaitGivon , dlynch305 brentkirkland (4pm) ,Scrape UCSB course pages for appripriate classes that fulfill certain GE requirements,
+
+W15-YES , mliou , GabeRome","maperghis , A gui that has the ability to mix together all sorts of instruments just like a beatbox,
+
+W15-YES , dcoffill , brandonwicka"," jordannguyen (4pm) , A new version of cs56-games-client-server that is identical on the outside"," but substantially refactored inside to have better MVC separation.,
+
+W15-YES , mliou , brianyan","salolivares (5pm) , Running game with obstacles.,
+
+W15-YES , PazZaitGivon , hannavigil cpounds (4pm) , Multi-level todo list application,
+
+W15-YES , jrcryan , ecarnohan"," triptisinghal (4pm) , Graphical hangman game,
+
+W15-YES , dcoffill , jeffrey711 (4pm) , A FTP client which can connect to a server"," download files from server and save it on local,
+
+W15-YES , alecharrell , peffedu , Implementation of 3 different types of string ciphers"," both encryption and decryption.,
+
+W15-YES , jrcryan , marshallnaito  & (Sharsoft alexisjimenez)5:00, An implementation of Connect Four,
+
+W15-YES , PazZaitGivon , sxh1991230 (5pm) , An alternative version of Battleship.,
+
+W15-YES , dcoffill , andrewtran1995"," elswenson (5pm) , A tutorial illustrating how to do simple zoom in and zoom out controls on"," for example"," a map image.,
+
+W15-YES , mliou , nickeidler (4pm), Quiz on US States with GUI,
+
+W15-YES , dcoffill , ShayanPersonal (5pm) , Treasure Hunter Game,
+
+W15-YES , mliou , amazingcaleb (5pm) , Minesweeper game,
+
+W15-YES , mliou , aferguson14 (6pm), (jcneally) rock paper scissors game using Pokemon,
+
+W15-YES , jrcryan , kevinwalau"," tkyngo (4pm) , A name memorization game,
+
+W15-YES , dcoffill , JohnUCSB"," mbahia (4pm) , Graphical Binary Clock,
+
+W15-YES , alecharrell , omeedrabani  & william-eiers,  Pokemon Map Renderer,
+
+W15-YES , mliou , spencerprescott (6pm), (pconrad) Poker Game,
+
+W15-YES , dcoffill , nikolasjchaconas (4pm) & marshallnaito, A classic game of Tetris,
+
+W15-YES , jrcryan , easyish"," EasterAndJay (5pm) , A credit card number validator,
+
+W15-YES , pconrad , pmsosa (4pm) , A repo that provides a basis for getting started with android programming,
+
+W15-YES , PazZaitGivon ,  , A command line 'Guess the Capital Game' where a player will be presented with either a random state or a random country ,
+
+W15-YES , PazZaitGivon ,rrthirumulu nickkpoon (5pm)  , Blood Alcohol Concentration Calculator,
+

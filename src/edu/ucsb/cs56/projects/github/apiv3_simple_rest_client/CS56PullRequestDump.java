@@ -27,7 +27,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
  
-public class CS56ProjectList {
+public class CS56PullRequestDump {
 
 
     public static void main(String[] args)    {
@@ -42,60 +42,30 @@ public class CS56ProjectList {
 	    conn.setRequestMethod("GET");
 	    GithubAPIHelpers.setOauthToken(conn,oauthToken);
 
-	    GithubAPIHelpers.dumpHttpHeaders(conn,System.out);
+	    // GithubAPIHelpers.dumpHttpHeaders(conn,System.out);
 
 	    InputStream is = url.openStream();
 	    JsonParser parser = Json.createParser(is);
-	    
-	    File file = new File("data.tab");
-	    // creates the file
-	    file.createNewFile();
-	    // creates a FileWriter Object
-	    FileWriter writer = new FileWriter(file); 
-	    int count = 0;
+	    String out="";
+	    int count=0;
 	    while (parser.hasNext()) {
-		String out = "";
+
 		Event e = parser.next();
 		if (e == Event.KEY_NAME) {
 		    switch (parser.getString()) {
 		    case "name":
 			
 			parser.next();
-			if(!descriptionCreated){
-			// System.out.println();
-			// out+="\n";
-			// writer.write("\n");
-
-			}
-			// System.out.print(parser.getString() + ", ");
-			out = parser.getString() + "\t";
-			// writer.write(parser.getString());
-			// writer.write(", ");
-			descriptionCreated=false;
-			break;
-		    case "description":
-
-			parser.next();
-			if(parser.getString().contains("W15-YES")) {
-			    out += "W15-YES\t ";
-			} else {
-			    out += "OTHER\t ";			    
-			}
-
-			count ++;
-			out += parser.getString().replace("|","\t");
-			System.out.println(out);
-			writer.write(out+"\n");
-			descriptionCreated=true;
-			out = "";
-			
-			//		writer.write("---------");
+			String name = parser.getString() ;
+			String pullsUrl = "https://api.github.com/repos/UCSB-CS56-Projects/" + name + "/pulls";
+			String allPulls = PullRequestGetterThingy.getAllPullRequests(pullsUrl);
+			System.out.println(name + "\n");
+			System.out.println(allPulls);
+			System.out.println("-------------------\n");
 			break;
 		    } // switch
 		} // if
 	    } // while
-	    writer.flush();
-	    writer.close();
 	    System.out.println("outputted: " + count + " projects" );
 	    
 	}  catch (MalformedURLException e) {
