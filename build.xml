@@ -5,14 +5,16 @@
   <property name="webRoot" value="${env.HOME}/public_html/" />
   <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}" />
   
-  
-  <property name="project" value="jcapi_demo" />
+  <property name="project" value="github-apiv3-simple-rest-client" />
   
   <property name="javadocDest" value="${webRoot}/${project}/javadoc" /> 
   <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
   
   <property name="dumpClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectDump"/>
+
   <property name="listClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectList"/>
+
+<property name="lab00Class" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56_lab00_list"/>
   
   
   <path id="project.class.path">
@@ -42,6 +44,12 @@
 
   <target name="runList" depends="compile" description="run list program">
     <java classname="${listClass}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+
+  <target name="runLab00" depends="compile" description="run lab00 program">
+    <java classname="${lab00Class}" fork="true" >
       <classpath refid="project.class.path" />
     </java>
   </target>
