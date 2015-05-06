@@ -76,36 +76,70 @@ public class ReposImCollaboratorOnByName {
 	    int count = 0;
 	    String out = "";
 	    int nestingLevel = 0;
+	    Event e = null;
+	    Event prevEvent = null;
+	    java.util.Stack<String> eventStack = new java.util.Stack<String>();
+	    String eString = null;
 	    while (parser.hasNext()) {
-		
-		Event e = parser.next();
+		e = parser.next();
+
 		if (e == Event.START_OBJECT) {
-		    nestingLevel++;
+		    eventStack.push(eString);
 		} else if (e == Event.END_OBJECT) {
-		    nestingLevel--;
+		    eventStack.pop();
 		} else if (e == Event.KEY_NAME) {
-		    switch (parser.getString()) {
+		    eString = parser.getString();
+		    switch (eString) {
 		    case "full_name":
-			parser.next();
-			String thisString = parser.getString();
-			if(thisString.contains(searchKey)) {
-			    out = thisString;
+
+			if (out != "")  {
+			    
+			    count ++;
+			    writer.write(out + "\n");
+			    out = "";
+			}
+
+
+			e = parser.next();
+			assert e == Event.VALUE_STRING : "not VALUE_STRING";
+			eString = parser.getString();
+			if (eString.contains(searchKey)) {
+			    out = eString;
 			}
 			break;
 		    case "html_url":
-			if (nestingLevel == 1) {
-			    parser.next();
+			e = parser.next();
+			assert e == Event.VALUE_STRING : "not VALUE_STRING";
+			eString = parser.getString();
+			if (eventStack.size() == 1) {
 			    if (out != "")  {
-				out += ("," + parser.getString());
-				count ++;
-				writer.write(out + "\n");
-				out = "";
+				out += ("," + eString);
 			    }
 			}
+			break;
+		    case "login":
+			e = parser.next();
+			assert e == Event.VALUE_STRING : "not VALUE_STRING";
+			eString = parser.getString();
+			if (out != "" && eventStack.peek().equals("owner")) {
+			    out += ("," + eString);
+			    
+			    UserInfo g = new UserInfo(eString);
+			    out += ("," + g.getName());
+			}
+			
 		    } // switch
 		} 
 	    } // while
 
+
+	    if (out != "")  {
+		
+		count ++;
+		writer.write(out + "\n");
+		out = "";
+	    }
+	    
 	    writer.flush();
 	    writer.close();
 	    System.out.println("outputted: " + count + " projects" );
