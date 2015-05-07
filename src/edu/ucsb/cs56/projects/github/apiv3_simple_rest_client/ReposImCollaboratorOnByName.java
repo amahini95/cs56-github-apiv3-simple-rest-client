@@ -34,7 +34,9 @@ public class ReposImCollaboratorOnByName {
     }
     
     public static void main(String[] args)    {
-	String searchKey = "cs32-s15-lab04";
+	String searchKey = "cs32-s15-lab03";
+	String oauthTokenFile = "ucsb.ReadOnly.txt";
+	String outputFileName = "data.csv";
 
 	if (args.length > 0) {
 	    searchKey = args[0].trim();
@@ -42,24 +44,38 @@ public class ReposImCollaboratorOnByName {
 
 	System.out.println("searchKey=" + searchKey);
 
+	String oauthToken = null;
+
         try {
 	    
-	    String oauthToken = GithubAPIHelpers.readOauthToken("tokens/ucsb.ReadOnly.txt");
-	    
-	    System.out.println("oauthToken=" + oauthToken);
+	    oauthToken = GithubAPIHelpers.readOauthToken("tokens/" + oauthTokenFile);
+	} catch (Exception e) {
+	    System.err.println("Unable to get oauth token");
+	    System.err.println("Please create a subdirectory called tokens");
+	    System.err.println("In that directory, create a text file called " + oauthTokenFile + " containing a valid oauth token.");
+	    System.err.println("To generate an oauth token: ");
+	    System.err.println("Clicking the gear icon in your github.ucsb.edu account,");
+	    System.err.println("then click 'Applications' then 'Generate New Token'");
+	    System.err.println("The minimal default permissions already checked are sufficient!");
+	    System.exit(1);
+	}
 
+	try {
+	    
+	    // System.out.println("oauthToken=" + oauthToken);
+	    
 	    String urlString = "https://github.ucsb.edu/api/v3/user/repos";
 	    urlString += "?access_token=" + oauthToken;
 	    urlString += "&page=1&per_page=100";
-
+	    
 	    URL url = new URL(urlString);
-
+	    
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    
 	    conn.setRequestMethod("GET");
 	    conn.setRequestProperty("Accept", "application/json");
 	    // GithubAPIHelpers.setOauthToken(conn,oauthToken);
-	    GithubAPIHelpers.dumpHttpHeaders(conn,System.out);
+	    // GithubAPIHelpers.dumpHttpHeaders(conn,System.out);
 	    
 	    if (conn.getResponseCode() != 200) {
 		throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
@@ -68,7 +84,7 @@ public class ReposImCollaboratorOnByName {
 	    InputStream is = url.openStream();
 	    JsonParser parser = Json.createParser(is);
 	    
-	    File file = new File("data.csv");
+	    File file = new File(outputFileName);
 	    // creates the file
 	    file.createNewFile();
 	    // creates a FileWriter Object
@@ -142,7 +158,7 @@ public class ReposImCollaboratorOnByName {
 	    
 	    writer.flush();
 	    writer.close();
-	    System.out.println("outputted: " + count + " projects" );
+	    System.out.println("outputted: " + count + " projects to file:  " + outputFileName );
 	    
 	}  catch (MalformedURLException e) {
 	    e.printStackTrace();

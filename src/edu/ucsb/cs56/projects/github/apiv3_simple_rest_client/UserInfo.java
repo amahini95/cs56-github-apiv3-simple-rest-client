@@ -74,7 +74,7 @@ public class UserInfo {
 	try {
 
 	    String oauthToken = GithubAPIHelpers.readOauthToken("tokens/ucsb.ReadOnly.txt");
-	    System.out.println("oauthToken=" + oauthToken);
+	    // System.out.println("oauthToken=" + oauthToken);
 	    urlString += "?access_token=" + oauthToken;
 
 	    URL url = new URL(urlString);

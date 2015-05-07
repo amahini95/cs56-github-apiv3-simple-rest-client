@@ -19,6 +19,8 @@
 
   <property name="dumpPullRequestsClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56PullRequestDump"/>
 
+  <property name="cs32Class" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.ReposImCollaboratorOnByName"/>
+
   
   
   <path id="project.class.path">
@@ -42,6 +44,13 @@
   
   <target name="runDump" depends="compile" description="run dump program">
     <java classname="${dumpClass}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+
+
+  <target name="cs32" depends="compile" description="run checker for cs32-s15-lab03">
+    <java classname="${cs32Class}" fork="true" >
       <classpath refid="project.class.path" />
     </java>
   </target>
