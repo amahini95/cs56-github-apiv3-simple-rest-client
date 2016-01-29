@@ -15,7 +15,9 @@
   <property name="listClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56ProjectList"/>
 
 
-<property name="lab00Class" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56_lab00_list"/>
+  <property name="lab00Class" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56_lab00_list"/>
+
+  <property name="kohsuke" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.KohsukeAPI"/>
 
   <property name="dumpPullRequestsClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56PullRequestDump"/>
 
@@ -28,6 +30,15 @@
     <pathelement location="lib/json-1.0.4.jar"/>
     <pathelement location="build"/>
     <pathelement location="lib/junit-4.8.2.jar"/>
+    <pathelement location="lib/github-api-1.72.jar"/>
+    <pathelement location="lib/jackson-databind-2.7.0.jar"/>
+    <pathelement location="lib/jackson-core-2.7.0.jar"/>
+    <pathelement location="lib/jackson-annotations-2.7.0.jar"/>
+    <pathelement location="lib/commons-io-2.4.jar"/>
+    <pathelement location="lib/commons-codec-1.10.jar"/>
+    <pathelement location="lib/commons-lang3-3.4.jar"/>
+
+    <pathelement location="**/*.jar"/>
   </path>
   
   <target name="compile" description="compiles the program">
@@ -70,6 +81,12 @@
 
   <target name="runLab00" depends="compile" description="run lab00 program">
     <java classname="${lab00Class}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+
+    <target name="kohsuke" depends="compile" description="run example Kohsuke API code">
+    <java classname="${kohsuke}" fork="true" >
       <classpath refid="project.class.path" />
     </java>
   </target>
