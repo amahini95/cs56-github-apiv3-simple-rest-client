@@ -19,6 +19,8 @@
 
   <property name="kohsuke" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.KohsukeAPI"/>
 
+  <property name="githubUCSB" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.GitHubUCSB"/>
+
   <property name="dumpPullRequestsClass" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.CS56PullRequestDump"/>
 
   <property name="cs32Class" value="edu.ucsb.cs56.projects.github.apiv3_simple_rest_client.ReposImCollaboratorOnByName"/>
@@ -85,8 +87,14 @@
     </java>
   </target>
 
-    <target name="kohsuke" depends="compile" description="run example Kohsuke API code">
+  <target name="kohsuke" depends="compile" description="run example Kohsuke API code">
     <java classname="${kohsuke}" fork="true" >
+      <classpath refid="project.class.path" />
+    </java>
+  </target>
+    
+  <target name="ucsb" depends="compile" description="run GitHub UCSB API code">
+    <java classname="${githubUCSB}" fork="true" >
       <classpath refid="project.class.path" />
     </java>
   </target>
