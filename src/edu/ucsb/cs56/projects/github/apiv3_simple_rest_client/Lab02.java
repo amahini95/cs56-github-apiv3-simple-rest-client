@@ -49,6 +49,10 @@ public class Lab02 extends Lab {
       for(int i = 0 ; i < names.size(); i += 2) {
         html = "<h1>" + names.get(i) + " and " + names.get(i+1) + "</h1><h2>cs56-w16-lab02</h2>";
         lab02 = github.getUser(names.get(i)).getRepository("cs56-w16-lab02");        
+        
+        if (lab02 == null) {
+          lab02 = github.getUser(names.get(i + 1)).getRepository("cs56-w16-lab02");        
+        }
         if (lab02 == null) {
           html += "<p>There was an error, please check manually</p>";
           ArrayList al = new ArrayList();

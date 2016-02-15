@@ -43,9 +43,9 @@ public abstract class Lab {
   Lab() {
     try {
       Scanner sc = new Scanner(System.in);
-      System.out.println("Please enter your GitHub username: ");
+      System.out.println("Please enter your GitHub UCSB username: ");
       username = sc.nextLine();
-      System.out.println("Please enter your GitHub password: ");
+      System.out.println("Please enter your GitHub UCSB password: ");
       password = sc.nextLine();
       initGitHub(username, password);
       me = github.getMyself();
