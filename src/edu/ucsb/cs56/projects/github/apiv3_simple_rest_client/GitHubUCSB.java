@@ -20,8 +20,8 @@ import java.util.Scanner;
 public class GitHubUCSB {
   
   public static void main(String[] args) {
-    Lab02 lab02 = new Lab02();
-    lab02.grade();
+    Lab03 lab03 = new Lab03();
+    lab03.grade();
     // for(GHRepository repo : repos) {
     //   Set<String> collaborators = repo.getCollaborators()
     //   for (String collaborator : collaborators)
